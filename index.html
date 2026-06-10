@@ -12,11 +12,14 @@
 </head>
 <body>
 
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
 <!-- NAVIGATION -->
-<nav>
+<nav id="navbar">
   <a href="#" class="nav-logo">
     <div class="nav-logo-icon">
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 14c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
     </div>
     <span class="nav-logo-text">Dupont Plomberie</span>
   </a>
@@ -30,21 +33,39 @@
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.52-1.52a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
     06 12 34 56 78
   </a>
+  <button class="nav-burger" id="navBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#services" class="mm-link">Services</a></li>
+    <li><a href="#realisations" class="mm-link">Réalisations</a></li>
+    <li><a href="#avis" class="mm-link">Avis</a></li>
+    <li><a href="#devis" class="mm-link">Devis</a></li>
+  </ul>
+  <a href="tel:0612345678" class="btn-accent" style="margin-top:24px;justify-content:center;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.52-1.52a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Appeler maintenant
+  </a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
+  <div class="hero-photo" id="heroPhoto"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-particles" id="heroParticles"></div>
   <div class="hero-content">
     <div class="hero-badge">
       <div class="hero-badge-dot"></div>
       Disponible 7 jours / 7
     </div>
-    <h1>Votre plombier<br>à <span>Paris</span> —<br>réactif et pro.</h1>
+    <h1>Votre plombier<br>à <span class="gradient-text">Paris</span> —<br>réactif et pro.</h1>
     <p class="hero-sub">Installation sanitaire, dépannage d'urgence, rénovation de salle de bain et chauffage. Devis gratuit et intervention rapide.</p>
     <div class="hero-actions">
-      <a href="tel:0612345678" class="btn-accent">
+      <a href="tel:0612345678" class="btn-accent btn-glow">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.52-1.52a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         Appeler maintenant
       </a>
@@ -52,30 +73,54 @@
         Demander un devis gratuit →
       </a>
     </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Devis gratuit
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Sans engagement
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Garantie décennale
+      </div>
+    </div>
   </div>
   <div class="hero-stats">
     <div class="stat-card">
-      <div class="stat-number">15<span>+</span></div>
+      <div class="stat-number"><span class="counter" data-target="15">0</span><span>+</span></div>
       <div class="stat-label">Ans d'expérience</div>
     </div>
     <div class="stat-card">
-      <div class="stat-number">500<span>+</span></div>
+      <div class="stat-number"><span class="counter" data-target="500">0</span><span>+</span></div>
       <div class="stat-label">Clients satisfaits</div>
     </div>
     <div class="stat-card">
-      <div class="stat-number"><span>&lt;</span>2h</div>
+      <div class="stat-number"><span>&lt;</span><span class="counter" data-target="2">0</span><span>h</span></div>
       <div class="stat-label">Délai d'intervention</div>
     </div>
   </div>
+  <a href="#services" class="hero-scroll-hint">
+    <div class="scroll-hint-wheel"></div>
+  </a>
 </section>
 
 <!-- URGENCE -->
 <div class="urgence-strip">
-  <p>
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    Urgence plomberie ? Intervention rapide à Paris et banlieue
-  </p>
-  <a href="tel:0612345678">06 12 34 56 78</a>
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <span>⚡ Urgence plomberie — Intervention rapide 7j/7 à Paris et Île-de-France</span>
+      <span>📍 Paris 75 — Tous arrondissements</span>
+      <span>⚡ Dépannage en moins de 2h</span>
+      <span>📞 06 12 34 56 78 — Disponible maintenant</span>
+      <span>⚡ Urgence plomberie — Intervention rapide 7j/7 à Paris et Île-de-France</span>
+      <span>📍 Paris 75 — Tous arrondissements</span>
+      <span>⚡ Dépannage en moins de 2h</span>
+      <span>📞 06 12 34 56 78 — Disponible maintenant</span>
+    </div>
+  </div>
 </div>
 
 <!-- SERVICES -->
@@ -90,7 +135,7 @@
       </div>
       <h3>Dépannage urgent</h3>
       <p>Fuite d'eau, canalisation bouchée, robinet cassé — j'interviens en moins de 2h à Paris, 7 jours sur 7.</p>
-      <a href="#devis" class="service-link">Appeler maintenant →</a>
+      <a href="tel:0612345678" class="service-link">Appeler maintenant →</a>
     </div>
     <div class="service-card reveal reveal-delay-1">
       <div class="service-icon-wrap">
@@ -106,7 +151,7 @@
       </div>
       <h3>Rénovation salle de bain</h3>
       <p>Conception et réalisation complète. Carrelage, douche à l'italienne, balnéo — je gère tout de A à Z.</p>
-      <a href="#devis" class="service-link">Voir mes réalisations →</a>
+      <a href="#realisations" class="service-link">Voir mes réalisations →</a>
     </div>
     <div class="service-card reveal reveal-delay-3">
       <div class="service-icon-wrap">
@@ -119,15 +164,38 @@
   </div>
 </section>
 
+<!-- CHIFFRES CLÉS -->
+<section class="chiffres-section">
+  <div class="chiffres-grid">
+    <div class="chiffre-item reveal">
+      <div class="chiffre-num"><span class="counter" data-target="15">0</span>+</div>
+      <div class="chiffre-label">Années d'expérience</div>
+    </div>
+    <div class="chiffre-item reveal reveal-delay-1">
+      <div class="chiffre-num"><span class="counter" data-target="500">0</span>+</div>
+      <div class="chiffre-label">Clients satisfaits</div>
+    </div>
+    <div class="chiffre-item reveal reveal-delay-2">
+      <div class="chiffre-num"><span class="counter" data-target="200">0</span>+</div>
+      <div class="chiffre-label">Avis Google</div>
+    </div>
+    <div class="chiffre-item reveal reveal-delay-3">
+      <div class="chiffre-num">4,9<span class="chiffre-star">★</span></div>
+      <div class="chiffre-label">Note moyenne</div>
+    </div>
+  </div>
+</section>
+
 <!-- POURQUOI MOI -->
 <section>
   <div class="why-grid">
     <div class="why-image-wrap reveal">
       <div class="why-image">
-        <div class="why-image-inner">
-          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-          <p>Votre photo de chantier ici</p>
-        </div>
+        <img
+          src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=85&fit=crop&crop=center"
+          alt="Plombier professionnel au travail"
+          loading="lazy"
+        />
       </div>
       <div class="why-badge-float">
         <div>
@@ -138,6 +206,10 @@
           <div class="small" style="font-size:13px;opacity:1;font-weight:700;">d'expérience</div>
           <div class="small">à Paris</div>
         </div>
+      </div>
+      <div class="why-badge-float-2">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Garantie décennale
       </div>
     </div>
     <div>
@@ -190,61 +262,69 @@
 <section class="real-bg" id="realisations">
   <div class="section-eyebrow reveal">Mes réalisations</div>
   <div class="section-title reveal reveal-delay-1">Des chantiers<br>dont je suis fier.</div>
-  <div class="section-sub reveal reveal-delay-2">Quelques exemples de travaux réalisés à Paris et en Île-de-France. Remplacez ces espaces par vos vraies photos.</div>
+  <div class="section-sub reveal reveal-delay-2">Quelques exemples de travaux réalisés à Paris et en Île-de-France.</div>
   <div class="real-grid reveal">
-    <div class="real-item">
-      <div class="real-photo real-photo-1">
-        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
-      </div>
+
+    <div class="real-item real-item-large">
+      <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=700&q=85&fit=crop&crop=center" alt="Rénovation salle de bain" loading="lazy" />
       <div class="real-overlay">
-        <h4>Rénovation salle de bain complète</h4>
+        <div class="real-tag">Rénovation</div>
+        <h4>Salle de bain complète</h4>
         <p>Paris 11ème — douche italienne + balnéo</p>
       </div>
     </div>
+
     <div class="real-item">
-      <div class="real-photo real-photo-2">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
-      </div>
+      <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&q=85&fit=crop&crop=center" alt="Installation chaudière" loading="lazy" />
       <div class="real-overlay">
-        <h4>Installation chaudière à condensation</h4>
+        <div class="real-tag">Chauffage</div>
+        <h4>Chaudière à condensation</h4>
         <p>Paris 15ème — économies 40%</p>
       </div>
     </div>
+
     <div class="real-item">
-      <div class="real-photo real-photo-3">
-        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-      </div>
+      <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=500&q=85&fit=crop&crop=center" alt="Réparation fuite" loading="lazy" />
       <div class="real-overlay">
+        <div class="real-tag">Dépannage</div>
         <h4>Réparation fuite principale</h4>
         <p>Immeuble Paris 8ème — urgence 24h</p>
       </div>
     </div>
+
     <div class="real-item">
-      <div class="real-photo real-photo-4">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
-      </div>
+      <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=500&q=85&fit=crop&crop=center" alt="Création salle d'eau" loading="lazy" />
       <div class="real-overlay">
+        <div class="real-tag">Création</div>
         <h4>Création salle d'eau</h4>
         <p>Paris 20ème — du sol aux finitions</p>
       </div>
     </div>
+
     <div class="real-item">
-      <div class="real-photo real-photo-5">
-        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-      </div>
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=85&fit=crop&crop=center" alt="Appartement haussmannien" loading="lazy" />
       <div class="real-overlay">
-        <h4>Rénovation appartement Haussmannien</h4>
+        <div class="real-tag">Rénovation</div>
+        <h4>Appartement Haussmannien</h4>
         <p>Plomberie complète refaite</p>
       </div>
     </div>
+
   </div>
 </section>
 
 <!-- AVIS CLIENTS -->
-<section id="avis" style="background: var(--off-white);">
+<section id="avis" class="avis-section">
   <div class="section-eyebrow reveal">Avis clients</div>
   <div class="section-title reveal reveal-delay-1">Ils me font<br>confiance.</div>
   <div class="section-sub reveal reveal-delay-2">Plus de 200 avis vérifiés sur Google. Note moyenne : 4,9 / 5.</div>
+
+  <div class="avis-rating-big reveal reveal-delay-2">
+    <div class="rating-score">4,9</div>
+    <div class="rating-stars">★★★★★</div>
+    <div class="rating-label">Sur Google</div>
+  </div>
+
   <div class="avis-grid">
     <div class="avis-card reveal">
       <div class="avis-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
@@ -296,7 +376,7 @@
           </div>
           <div>
             <div class="contact-item-label">Urgences — 7j/7</div>
-            <div class="contact-item-value">06 12 34 56 78</div>
+            <a href="tel:0612345678" class="contact-item-value contact-link">06 12 34 56 78</a>
           </div>
         </div>
         <div class="contact-item">
@@ -339,7 +419,7 @@
       <div class="form-row"><label>Décrivez votre besoin</label>
         <textarea placeholder="Ex : fuite sous l'évier de la cuisine depuis hier soir..."></textarea>
       </div>
-      <button class="form-submit" type="button">
+      <button class="form-submit" type="button" id="formSubmit">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         Envoyer ma demande
       </button>
@@ -353,7 +433,7 @@
     <div>
       <div style="display:flex;align-items:center;gap:10px;">
         <div style="width:32px;height:32px;background:var(--accent);border-radius:7px;display:flex;align-items:center;justify-content:center;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--navy)"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 14c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--navy)"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
         </div>
         <div class="footer-brand-name">Dupont Plomberie</div>
       </div>
@@ -390,6 +470,12 @@
     <span>Siret : XXX XXX XXX XXXXX · Assurance décennale</span>
   </div>
 </footer>
+
+<!-- FLOATING CTA -->
+<a href="tel:0612345678" class="floating-cta" id="floatingCta" aria-label="Appeler maintenant">
+  <div class="floating-cta-ring"></div>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.52-1.52a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+</a>
 
 <script src="script.js"></script>
 </body>
