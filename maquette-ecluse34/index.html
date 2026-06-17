@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Écluse 34 — La guinguette à Agen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF4E8;
+    --cream2:#F4E6CF;
+    --ink:#2A2117;
+    --muted:#7C6A52;
+    --terr:#C7562F;
+    --terr-deep:#9C3F20;
+    --green:#3C5538;
+    --green-deep:#2A3D29;
+    --gold:#E2A455;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+    width:1280px;
+  }
+  h1,h2,h3,.serif{font-family:'Fraunces',serif}
+  .script{font-family:'Caveat',cursive}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 48px}
+
+  /* ===== NAV ===== */
+  nav{
+    position:absolute;top:0;left:0;right:0;z-index:20;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:26px 56px;
+  }
+  .logo{display:flex;align-items:center;gap:12px;color:#FFF7EA}
+  .logo-badge{
+    width:46px;height:46px;border-radius:50%;
+    border:2px solid rgba(255,247,234,.85);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:700;font-size:20px;
+    letter-spacing:.5px;
+  }
+  .logo-txt{line-height:1}
+  .logo-txt b{font-family:'Fraunces',serif;font-weight:600;font-size:21px;letter-spacing:.3px;display:block}
+  .logo-txt span{font-size:11px;letter-spacing:3px;text-transform:uppercase;opacity:.85}
+  .nav-links{display:flex;align-items:center;gap:34px;list-style:none}
+  .nav-links a{color:#FFF7EA;text-decoration:none;font-size:14.5px;font-weight:500;opacity:.92}
+  .nav-cta{
+    background:#FFF7EA;color:var(--terr-deep);
+    padding:11px 22px;border-radius:30px;font-weight:600;font-size:14px;
+    box-shadow:0 8px 22px rgba(0,0,0,.18);
+  }
+
+  /* ===== HERO ===== */
+  .hero{position:relative;height:660px;overflow:hidden}
+  .hero svg.scene{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-content{
+    position:absolute;left:0;right:0;top:158px;text-align:center;z-index:10;
+    color:#FFF7EA;
+  }
+  .hero-eyebrow{
+    font-family:'Caveat',cursive;font-size:34px;color:#FFE6C2;
+    text-shadow:0 2px 14px rgba(60,20,0,.35);margin-bottom:2px;
+  }
+  .hero h1{
+    font-size:104px;font-weight:600;line-height:.96;letter-spacing:-1px;
+    color:#FFF7EA;text-shadow:0 6px 30px rgba(54,18,0,.4);
+  }
+  .hero h1 .small{display:block;font-size:30px;font-weight:500;letter-spacing:6px;
+    text-transform:uppercase;margin-top:18px;opacity:.95;font-family:'Inter',sans-serif}
+  .hero-sub{
+    margin:22px auto 0;max-width:540px;font-size:17px;line-height:1.6;
+    color:#FFF1DD;text-shadow:0 2px 14px rgba(54,18,0,.4);
+  }
+  .hero-btns{margin-top:34px;display:flex;gap:16px;justify-content:center}
+  .btn-primary{
+    background:var(--terr);color:#FFF7EA;padding:15px 30px;border-radius:32px;
+    font-weight:600;font-size:15px;box-shadow:0 14px 30px rgba(120,40,10,.4);
+  }
+  .btn-ghost{
+    background:rgba(255,247,234,.12);color:#FFF7EA;padding:15px 30px;border-radius:32px;
+    font-weight:600;font-size:15px;border:1.5px solid rgba(255,247,234,.6);
+    backdrop-filter:blur(2px);
+  }
+  .hero-strip{
+    position:absolute;left:0;right:0;bottom:0;z-index:10;
+    display:flex;justify-content:center;gap:60px;
+    padding:18px 0;background:rgba(42,33,23,.32);backdrop-filter:blur(3px);
+    color:#FFF1DD;font-size:13.5px;letter-spacing:.4px;
+  }
+  .hero-strip b{font-family:'Fraunces',serif;font-weight:600}
+  .hero-strip .dot{opacity:.5}
+
+  /* ===== SECTION SHELL ===== */
+  section{padding:92px 0}
+  .tag{
+    display:inline-block;font-family:'Caveat',cursive;font-size:27px;
+    color:var(--terr);line-height:1;margin-bottom:6px;
+  }
+  .h2{font-size:46px;font-weight:600;line-height:1.05;letter-spacing:-.5px}
+  .lead{color:var(--muted);font-size:16px;line-height:1.7;max-width:560px}
+  .center{text-align:center;margin:0 auto}
+
+  /* ===== ESPRIT ===== */
+  .esprit{background:var(--cream)}
+  .esprit-head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:54px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .card{
+    background:#FFFDF8;border:1px solid #EBDCC2;border-radius:22px;
+    padding:34px 30px;box-shadow:0 18px 40px rgba(120,90,40,.07);
+  }
+  .card .ic{
+    width:58px;height:58px;border-radius:16px;display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;background:var(--cream2);
+  }
+  .card h3{font-size:22px;font-weight:600;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:14.5px;line-height:1.65}
+
+  /* ===== CARTE ===== */
+  .carte{background:var(--green-deep);color:#F3EAD8;position:relative;overflow:hidden}
+  .carte .leaf{position:absolute;opacity:.16}
+  .carte .h2{color:#FBF2E0}
+  .carte .tag{color:var(--gold)}
+  .carte .lead{color:#CDBd9e}
+  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;margin-top:54px}
+  .menu-col h3{
+    font-size:15px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);
+    font-family:'Inter',sans-serif;font-weight:600;margin-bottom:24px;
+    padding-bottom:14px;border-bottom:1px solid rgba(226,164,85,.3);
+  }
+  .item{display:flex;align-items:baseline;gap:10px;margin-bottom:22px}
+  .item .nm{font-family:'Fraunces',serif;font-size:19px;font-weight:500;color:#FBF2E0;white-space:nowrap}
+  .item .ds{font-size:12.5px;color:#A99E86;display:block;margin-top:3px}
+  .item .leader{flex:1;border-bottom:1.5px dotted rgba(226,164,85,.4);transform:translateY(-4px)}
+  .item .pr{font-family:'Fraunces',serif;font-size:19px;font-weight:600;color:var(--gold);white-space:nowrap}
+
+  /* ===== AGENDA ===== */
+  .agenda{background:var(--cream)}
+  .agenda-head{text-align:center;margin-bottom:50px}
+  .events{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .ev{
+    background:#FFFDF8;border:1px solid #EBDCC2;border-radius:20px;padding:28px 24px;
+    text-align:center;box-shadow:0 14px 32px rgba(120,90,40,.06);
+  }
+  .ev .day{font-family:'Caveat',cursive;font-size:30px;color:var(--terr);line-height:1}
+  .ev h4{font-size:18px;font-weight:600;margin:12px 0 6px;font-family:'Fraunces',serif}
+  .ev p{color:var(--muted);font-size:13.5px;line-height:1.55}
+  .ev .when{display:inline-block;margin-top:14px;font-size:12px;font-weight:600;
+    color:var(--green);background:#E8EFE2;padding:5px 12px;border-radius:20px}
+
+  /* ===== INFOS / CTA ===== */
+  .infos{background:var(--cream2)}
+  .infos-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:stretch}
+  .info-list{padding:6px 0}
+  .info-row{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid #E2D2B4}
+  .info-row:last-child{border-bottom:none}
+  .info-ic{width:46px;height:46px;border-radius:13px;background:#FFFDF8;border:1px solid #E7D7BC;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .info-row .lab{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .info-row .val{font-family:'Fraunces',serif;font-size:19px;font-weight:500;margin-top:3px;line-height:1.35}
+  .reserve{
+    background:var(--terr);color:#FFF7EA;border-radius:24px;padding:48px 44px;
+    display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;
+    box-shadow:0 24px 50px rgba(150,60,25,.28);
+  }
+  .reserve .script{font-size:30px;color:#FFE6C2}
+  .reserve h3{font-size:38px;font-weight:600;line-height:1.05;margin:6px 0 14px;color:#FFF7EA}
+  .reserve p{color:#FFE2C9;font-size:15px;line-height:1.6;margin-bottom:26px}
+  .reserve .rbtn{background:#FFF7EA;color:var(--terr-deep);padding:15px 28px;border-radius:30px;
+    font-weight:600;font-size:15px;align-self:flex-start;box-shadow:0 12px 26px rgba(80,20,0,.25)}
+  .reserve .phone{margin-top:18px;font-size:14px;color:#FFE2C9}
+  .reserve .phone b{font-family:'Fraunces',serif;font-size:22px;color:#FFF7EA}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--green-deep);color:#D8CFB9;padding:46px 0 30px}
+  .foot{display:flex;justify-content:space-between;align-items:center}
+  .foot .logo-txt b{color:#FBF2E0}
+  .foot .logo-badge{border-color:rgba(251,242,224,.6)}
+  .foot-links{display:flex;gap:26px;list-style:none;font-size:13.5px}
+  .foot-bot{margin-top:30px;padding-top:22px;border-top:1px solid rgba(216,207,185,.18);
+    text-align:center;font-size:12.5px;color:#9C9176}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="logo">
+    <div class="logo-badge">É34</div>
+    <div class="logo-txt"><b>L'Écluse 34</b><span>Guinguette · Agen</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">L'esprit</a></li>
+    <li><a href="#">La carte</a></li>
+    <li><a href="#">Animations</a></li>
+    <li><a href="#">Infos</a></li>
+    <li><a href="#" class="nav-cta">Réserver</a></li>
+  </ul>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <svg class="scene" viewBox="0 0 1280 660" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"  stop-color="#F6C98E"/>
+        <stop offset="38%" stop-color="#F4B27E"/>
+        <stop offset="70%" stop-color="#EE9A77"/>
+        <stop offset="100%" stop-color="#F3B98C"/>
+      </linearGradient>
+      <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"  stop-color="#FFF3D2"/>
+        <stop offset="45%" stop-color="#FFE1A6" stop-opacity=".9"/>
+        <stop offset="100%" stop-color="#FFE1A6" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"  stop-color="#F0AE7E"/>
+        <stop offset="22%" stop-color="#C98E78"/>
+        <stop offset="55%" stop-color="#5E7E72"/>
+        <stop offset="100%" stop-color="#39564E"/>
+      </linearGradient>
+      <linearGradient id="deck" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#B5713E"/>
+        <stop offset="100%" stop-color="#7E4A26"/>
+      </linearGradient>
+    </defs>
+
+    <!-- sky -->
+    <rect width="1280" height="430" fill="url(#sky)"/>
+    <circle cx="760" cy="300" r="240" fill="url(#sun)"/>
+    <circle cx="760" cy="300" r="60" fill="#FFF1CE" opacity=".95"/>
+
+    <!-- soft clouds -->
+    <g fill="#FFF3DC" opacity=".35">
+      <ellipse cx="270" cy="120" rx="120" ry="20"/>
+      <ellipse cx="370" cy="135" rx="90" ry="15"/>
+      <ellipse cx="1050" cy="95" rx="130" ry="18"/>
+    </g>
+
+    <!-- distant hazy treeline -->
+    <path d="M0,360 Q160,318 330,344 T660,330 T980,346 T1280,326 L1280,430 L0,430 Z" fill="#D98C6A" opacity=".55"/>
+    <!-- mid bank trees -->
+    <path d="M0,372 Q120,340 230,360 Q300,330 380,358 Q470,332 560,360 Q650,336 760,360 Q880,334 1000,360 Q1110,338 1280,360 L1280,430 L0,430 Z" fill="#7C8650" opacity=".8"/>
+
+    <!-- water -->
+    <rect y="426" width="1280" height="120" fill="url(#water)"/>
+    <!-- sun reflection on water -->
+    <rect x="700" y="426" width="120" height="120" fill="#FFE1A6" opacity=".35"/>
+    <g stroke="#FFE9C4" stroke-width="2" opacity=".5">
+      <line x1="690" y1="446" x2="830" y2="446"/>
+      <line x1="705" y1="470" x2="815" y2="470"/>
+      <line x1="715" y1="494" x2="805" y2="494"/>
+      <line x1="725" y1="520" x2="795" y2="520"/>
+    </g>
+    <g stroke="#9FB6AB" stroke-width="2" opacity=".4">
+      <line x1="60" y1="452" x2="240" y2="452"/>
+      <line x1="980" y1="460" x2="1200" y2="460"/>
+      <line x1="120" y1="500" x2="360" y2="500"/>
+      <line x1="900" y1="510" x2="1160" y2="510"/>
+    </g>
+
+    <!-- lock gates (écluse) -->
+    <g opacity=".9">
+      <rect x="120" y="392" width="14" height="56" fill="#3E5236"/>
+      <rect x="250" y="392" width="14" height="56" fill="#3E5236"/>
+      <rect x="120" y="392" width="144" height="10" fill="#4B6240"/>
+      <rect x="186" y="392" width="12" height="40" fill="#2E3E28"/>
+    </g>
+
+    <!-- foreground deck -->
+    <rect y="540" width="1280" height="120" fill="url(#deck)"/>
+    <g stroke="#6E3F20" stroke-width="2" opacity=".55">
+      <line x1="0" y1="566" x2="1280" y2="566"/>
+      <line x1="0" y1="596" x2="1280" y2="596"/>
+      <line x1="0" y1="628" x2="1280" y2="628"/>
+    </g>
+    <g stroke="#915A30" stroke-width="3" opacity=".5">
+      <line x1="160" y1="540" x2="160" y2="660"/>
+      <line x1="430" y1="540" x2="430" y2="660"/>
+      <line x1="700" y1="540" x2="700" y2="660"/>
+      <line x1="980" y1="540" x2="980" y2="660"/>
+    </g>
+
+    <!-- left foliage frame -->
+    <g>
+      <circle cx="70" cy="300" r="110" fill="#33502F"/>
+      <circle cx="150" cy="360" r="90" fill="#3E5C36"/>
+      <circle cx="40" cy="400" r="100" fill="#2C4528"/>
+      <rect x="95" y="380" width="14" height="170" fill="#5A3A22"/>
+    </g>
+    <!-- right foliage frame -->
+    <g>
+      <circle cx="1220" cy="280" r="120" fill="#33502F"/>
+      <circle cx="1140" cy="350" r="95" fill="#3E5C36"/>
+      <circle cx="1250" cy="400" r="100" fill="#2C4528"/>
+      <rect x="1185" y="380" width="14" height="170" fill="#5A3A22"/>
+    </g>
+
+    <!-- bistro tables silhouettes on deck -->
+    <g fill="#43281A" opacity=".85">
+      <ellipse cx="330" cy="566" rx="30" ry="9"/>
+      <rect x="328" y="566" width="4" height="34"/>
+      <ellipse cx="950" cy="572" rx="34" ry="10"/>
+      <rect x="948" y="572" width="4" height="36"/>
+    </g>
+    <!-- parasol -->
+    <g opacity=".9">
+      <rect x="638" y="470" width="5" height="90" fill="#5A3A22"/>
+      <path d="M600,478 Q640,438 680,478 Z" fill="#C7562F"/>
+      <path d="M600,478 Q640,460 680,478" fill="none" stroke="#9C3F20" stroke-width="2"/>
+    </g>
+  </svg>
+
+  <!-- string lights overlay -->
+  <svg class="scene" viewBox="0 0 1280 660" preserveAspectRatio="xMidYMid slice" style="z-index:5" xmlns="http://www.w3.org/2000/svg">
+    <path d="M-20,70 Q200,150 420,86 T860,86 T1300,70" fill="none" stroke="#6B4B2E" stroke-width="2.5" opacity=".75"/>
+    <g id="bulbs"></g>
+    <path d="M-20,140 Q260,40 540,128 T1300,150" fill="none" stroke="#6B4B2E" stroke-width="2" opacity=".55"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">la guinguette au bord de l'eau</div>
+    <h1>L'Écluse 34<span class="small">Agen · Canal de Garonne</span></h1>
+    <p class="hero-sub">Les pieds dans l'herbe face au canal, on partage des planches généreuses,
+      des cocktails maison et de la musique jusqu'au coucher du soleil.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-primary">Réserver une table</a>
+      <a href="#" class="btn-ghost">Voir la carte</a>
+    </div>
+  </div>
+
+  <div class="hero-strip">
+    <span><b>Ouvert</b> · avril → septembre</span>
+    <span class="dot">●</span>
+    <span><b>Concerts</b> · tous les week-ends</span>
+    <span class="dot">●</span>
+    <span><b>Au pied</b> · de l'écluse n°34</span>
+  </div>
+</header>
+
+<!-- ============ ESPRIT ============ -->
+<section class="esprit">
+  <div class="wrap">
+    <div class="esprit-head">
+      <div>
+        <span class="tag">l'esprit guinguette</span>
+        <div class="h2">Un air de vacances,<br>au fil de l'eau.</div>
+      </div>
+      <p class="lead">À deux pas du centre d'Agen, l'Écluse 34 c'est une terrasse ombragée
+        au bord du canal latéral à la Garonne. On y vient pour l'apéro qui s'éternise,
+        un bon plat du Sud-Ouest et l'ambiance bal populaire d'autrefois.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="ic">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C7562F" stroke-width="1.7" stroke-linecap="round">
+            <path d="M2 18c2 0 2-1.5 4-1.5S8 18 10 18s2-1.5 4-1.5S16 18 18 18s2-1.5 4-1.5"/>
+            <path d="M2 13c2 0 2-1.5 4-1.5S8 13 10 13s2-1.5 4-1.5S16 13 18 13s2-1.5 4-1.5"/>
+            <path d="M12 9V4M9 6l3-3 3 3"/>
+          </svg>
+        </div>
+        <h3>Au bord du canal</h3>
+        <p>Une terrasse les pieds dans l'eau, à l'ombre des platanes, au pied de l'écluse historique n°34.</p>
+      </div>
+      <div class="card">
+        <div class="ic">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C7562F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 2v6c0 1.7-1.3 3-3 3s-3-1.3-3-3V2M5 11v11M18 2c-2.2 0-4 2.7-4 6s1.8 5 4 5"/>
+            <path d="M18 2v20"/>
+          </svg>
+        </div>
+        <h3>L'apéro & les planches</h3>
+        <p>Charcuterie, fromages fermiers, pruneaux d'Agen, vins de Buzet et cocktails maison à partager.</p>
+      </div>
+      <div class="card">
+        <div class="ic">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C7562F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"/>
+            <circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+          </svg>
+        </div>
+        <h3>Concerts & guinguette</h3>
+        <p>Bals, jazz manouche et DJ sets sous les guirlandes : on danse jusqu'au bout de la nuit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CARTE ============ -->
+<section class="carte">
+  <svg class="leaf" style="top:-30px;left:-30px" width="220" height="220" viewBox="0 0 100 100" fill="#E2A455"><path d="M50 5C30 25 10 40 10 65a40 40 0 0080 0c0-25-20-40-40-60z"/></svg>
+  <svg class="leaf" style="bottom:-40px;right:-20px" width="260" height="260" viewBox="0 0 100 100" fill="#E2A455"><path d="M50 5C30 25 10 40 10 65a40 40 0 0080 0c0-25-20-40-40-60z"/></svg>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="center" style="text-align:center;max-width:640px">
+      <span class="tag">à la carte</span>
+      <div class="h2">De quoi se régaler,<br>du Sud-Ouest dans l'assiette.</div>
+      <p class="lead center" style="margin-top:16px">Une cuisine simple et généreuse, des produits locaux et de saison.
+        Quelques incontournables de la maison :</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-col">
+        <h3>À grignoter</h3>
+        <div class="item">
+          <div><span class="nm">Planche du Sud-Ouest</span><span class="ds">Charcuterie, fromages, pruneaux d'Agen</span></div>
+          <span class="leader"></span><span class="pr">18 €</span>
+        </div>
+        <div class="item">
+          <div><span class="nm">Burger fermier & frites maison</span><span class="ds">Bœuf local, tomme du pays</span></div>
+          <span class="leader"></span><span class="pr">15 €</span>
+        </div>
+        <div class="item">
+          <div><span class="nm">Salade du marché</span><span class="ds">Légumes de saison, magret séché</span></div>
+          <span class="leader"></span><span class="pr">13 €</span>
+        </div>
+        <div class="item">
+          <div><span class="nm">Pruneaux d'Agen & glace</span><span class="ds">Le dessert maison à l'armagnac</span></div>
+          <span class="leader"></span><span class="pr">7 €</span>
+        </div>
+      </div>
+      <div class="menu-col">
+        <h3>À boire</h3>
+        <div class="item">
+          <div><span class="nm">Spritz de l'Écluse</span><span class="ds">La signature de l'apéro</span></div>
+          <span class="leader"></span><span class="pr">8 €</span>
+        </div>
+        <div class="item">
+          <div><span class="nm">Bière locale pression</span><span class="ds">Brassée en Lot-et-Garonne</span></div>
+          <span class="leader"></span><span class="pr">5 €</span>
+        </div>
+        <div class="item">
+          <div><span class="nm">Verre de Buzet rouge</span><span class="ds">Vignoble voisin</span></div>
+          <span class="leader"></span><span class="pr">5 €</span>
+        </div>
+        <div class="item">
+          <div><span class="nm">Limonade artisanale</span><span class="ds">Maison, bien fraîche</span></div>
+          <span class="leader"></span><span class="pr">4 €</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AGENDA ============ -->
+<section class="agenda">
+  <div class="wrap">
+    <div class="agenda-head">
+      <span class="tag">le programme</span>
+      <div class="h2">Tous les week-ends, ça guinche !</div>
+    </div>
+    <div class="events">
+      <div class="ev">
+        <div class="day">Jeu.</div>
+        <h4>Tournoi de pétanque</h4>
+        <p>Inscriptions sur place, apéro offert aux vainqueurs.</p>
+        <span class="when">dès 18h</span>
+      </div>
+      <div class="ev">
+        <div class="day">Ven.</div>
+        <h4>Jazz manouche</h4>
+        <p>Concert live sous les guirlandes, ambiance swing.</p>
+        <span class="when">20h30</span>
+      </div>
+      <div class="ev">
+        <div class="day">Sam.</div>
+        <h4>Bal & DJ set</h4>
+        <p>On danse au bord de l'eau jusqu'à minuit.</p>
+        <span class="when">21h</span>
+      </div>
+      <div class="ev">
+        <div class="day">Dim.</div>
+        <h4>Marché des producteurs</h4>
+        <p>Apéro fermier et brunch face au canal.</p>
+        <span class="when">dès 11h</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INFOS ============ -->
+<section class="infos">
+  <div class="wrap">
+    <div class="infos-grid">
+      <div class="info-list">
+        <span class="tag">infos pratiques</span>
+        <div class="h2" style="margin-bottom:18px">On vous attend<br>au bord du canal.</div>
+        <div class="info-row">
+          <div class="info-ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3C5538" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div><div class="lab">Adresse</div><div class="val">Chemin de halage, Écluse n°34<br>Canal de Garonne · 47000 Agen</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3C5538" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <div><div class="lab">Horaires</div><div class="val">Mer. → Dim. · 18h – minuit<br>Week-end dès 11h · avril à septembre</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3C5538" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.5-1.1a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg>
+          </div>
+          <div><div class="lab">Réservations</div><div class="val">05 53 47 34 34</div></div>
+        </div>
+      </div>
+      <div class="reserve">
+        <span class="script">envie d'une table au soleil ?</span>
+        <h3>Réservez votre soirée guinguette</h3>
+        <p>Apéro entre amis, anniversaire ou repas en famille : réservez votre table
+          face au canal et profitez de l'ambiance.</p>
+        <a href="#" class="rbtn">Réserver en ligne</a>
+        <div class="phone">ou appelez-nous : <b>05 53 47 34 34</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="logo">
+        <div class="logo-badge">É34</div>
+        <div class="logo-txt"><b>L'Écluse 34</b><span>Guinguette · Agen</span></div>
+      </div>
+      <ul class="foot-links">
+        <li>L'esprit</li><li>La carte</li><li>Animations</li><li>Réserver</li><li>Instagram</li>
+      </ul>
+    </div>
+    <div class="foot-bot">© 2026 L'Écluse 34 — La guinguette à Agen · Maquette de présentation</div>
+  </div>
+</footer>
+
+<script>
+  // generate glowing bulbs along the first string-light path
+  const path = document.querySelectorAll('.hero svg')[1].querySelector('path');
+  const g = document.getElementById('bulbs');
+  const colors = ['#FFD56B','#FFE9A8','#FFC04D','#FFEFC2'];
+  const len = path.getTotalLength();
+  for(let i=1;i<26;i++){
+    const p = path.getPointAtLength(len*i/26);
+    const c = colors[i%colors.length];
+    const glow = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    glow.setAttribute('cx',p.x); glow.setAttribute('cy',p.y+6); glow.setAttribute('r',12);
+    glow.setAttribute('fill',c); glow.setAttribute('opacity','.35');
+    const bulb = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    bulb.setAttribute('cx',p.x); bulb.setAttribute('cy',p.y+6); bulb.setAttribute('r',4.5);
+    bulb.setAttribute('fill',c);
+    g.appendChild(glow); g.appendChild(bulb);
+  }
+</script>
+</body>
+</html>
