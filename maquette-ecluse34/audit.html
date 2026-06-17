@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700&family=Inter:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF4E8; --cream2:#F4E6CF; --ink:#2A2117; --muted:#7C6A52;
+    --terr:#C7562F; --terr-deep:#9C3F20; --green:#3C5538; --green-deep:#2A3D29; --gold:#E2A455;
+    --red:#C0432F; --ok:#4E7A48;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--green-deep);width:1080px}
+  .page{width:1080px;min-height:1350px;background:var(--cream);position:relative;overflow:hidden;padding:64px 70px 58px}
+  h1,h2,h3,.serif{font-family:'Fraunces',serif}
+  .script{font-family:'Caveat',cursive}
+
+  /* header */
+  .head{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}
+  .brand{display:flex;align-items:center;gap:16px}
+  .badge{width:64px;height:64px;border-radius:50%;border:2.5px solid var(--terr);color:var(--terr);
+    display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:25px}
+  .brand b{font-family:'Fraunces',serif;font-weight:600;font-size:27px;display:block;line-height:1}
+  .brand span{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+  .pill{background:var(--green);color:#F3EAD8;padding:10px 20px;border-radius:30px;font-size:14px;font-weight:600;letter-spacing:.5px}
+
+  .title{font-size:60px;font-weight:600;line-height:1.0;letter-spacing:-1px;margin:16px 0 6px}
+  .title em{font-style:normal;color:var(--terr)}
+  .sub{color:var(--muted);font-size:18px;line-height:1.55;max-width:720px;margin-bottom:34px}
+
+  /* score band */
+  .score{display:flex;align-items:center;gap:34px;background:var(--green-deep);border-radius:26px;
+    padding:34px 40px;color:#F3EAD8;margin-bottom:36px}
+  .donut{width:140px;height:140px;border-radius:50%;flex-shrink:0;position:relative;
+    background:conic-gradient(var(--gold) 0 40%, rgba(243,234,216,.16) 40% 100%)}
+  .donut::after{content:"";position:absolute;inset:16px;border-radius:50%;background:var(--green-deep)}
+  .donut .v{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2}
+  .donut .v b{font-family:'Fraunces',serif;font-size:38px;font-weight:700;color:#FBF2E0;line-height:1}
+  .donut .v small{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+  .score-txt h3{font-size:25px;color:#FBF2E0;font-weight:600;margin-bottom:6px}
+  .score-txt p{color:#C9BC9F;font-size:16px;line-height:1.55;max-width:560px}
+  .score-txt .hl{color:var(--gold);font-weight:600}
+
+  /* two columns */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-bottom:34px}
+  .col{background:#FFFDF8;border:1px solid #EBDCC2;border-radius:22px;padding:30px 30px;
+    box-shadow:0 16px 36px rgba(120,90,40,.06)}
+  .col h3{font-size:21px;font-weight:600;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+  .row{display:flex;align-items:flex-start;gap:13px;padding:11px 0}
+  .ico{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+    font-size:15px;font-weight:700;color:#fff;margin-top:1px}
+  .ok .ico{background:var(--ok)} .no .ico{background:var(--red)} .warn .ico{background:var(--gold)}
+  .row .t{font-size:16px;font-weight:600;line-height:1.3}
+  .row .d{font-size:13.5px;color:var(--muted);line-height:1.4;margin-top:2px}
+
+  /* solution */
+  .solution{background:var(--terr);color:#FFF7EA;border-radius:24px;padding:38px 42px;
+    display:flex;align-items:center;justify-content:space-between;gap:30px;box-shadow:0 22px 46px rgba(150,60,25,.25)}
+  .solution .script{font-size:28px;color:#FFE6C2}
+  .solution h3{font-size:34px;font-weight:600;line-height:1.05;margin:2px 0 12px;color:#FFF7EA}
+  .solution ul{list-style:none;display:flex;flex-wrap:wrap;gap:9px 18px;max-width:560px}
+  .solution li{font-size:14.5px;color:#FFE9D6;display:flex;align-items:center;gap:7px}
+  .solution li::before{content:"✓";color:#FFF7EA;font-weight:700}
+  .cta{background:#FFF7EA;color:var(--terr-deep);border-radius:20px;padding:24px 26px;text-align:center;flex-shrink:0}
+  .cta b{font-family:'Fraunces',serif;font-size:23px;display:block;line-height:1.05}
+  .cta span{font-size:13px;color:var(--muted);display:block;margin-top:6px;max-width:160px}
+
+  .foot{text-align:center;margin-top:26px;color:var(--muted);font-size:13px}
+  .foot b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="head">
+    <div class="brand">
+      <div class="badge">É34</div>
+      <div><b>L'Écluse 34</b><span>Guinguette · Agen</span></div>
+    </div>
+    <div class="pill">AUDIT WEB · JUIN 2026</div>
+  </div>
+
+  <div class="title">Votre présence<br>en ligne, <em>au crible.</em></div>
+  <p class="sub">Un petit état des lieux de votre visibilité sur internet — et de tout le potentiel
+    encore inexploité pour remplir la terrasse.</p>
+
+  <div class="score">
+    <div class="donut"><div class="v"><b>2/5</b><small>visibilité</small></div></div>
+    <div class="score-txt">
+      <h3>Une super ambiance… mais difficile à trouver sur le web</h3>
+      <p>Vous êtes <span class="hl">très présents sur les réseaux</span>, mais sans site internet,
+        une bonne partie des clients potentiels ne tombe jamais sur vous au moment où ils cherchent
+        « <span class="hl">où boire un verre / guinguette à Agen</span> ».</p>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div class="col">
+      <h3>👍 Ce qui fonctionne déjà</h3>
+      <div class="row ok"><div class="ico">✓</div><div><div class="t">Instagram & Facebook actifs</div><div class="d">Une communauté et de belles photos qui donnent envie.</div></div></div>
+      <div class="row ok"><div class="ico">✓</div><div><div class="t">Une identité forte</div><div class="d">Le concept guinguette au bord du canal sort du lot.</div></div></div>
+      <div class="row ok"><div class="ico">✓</div><div><div class="t">Référencé par le tourisme</div><div class="d">Présents sur les fiches des offices de tourisme.</div></div></div>
+    </div>
+    <div class="col">
+      <h3>❌ Ce qui vous freine</h3>
+      <div class="row no"><div class="ico">✕</div><div><div class="t">Aucun site internet</div><div class="d">Pas de vitrine officielle à votre nom sur Google.</div></div></div>
+      <div class="row no"><div class="ico">✕</div><div><div class="t">Pas de contact / résa en ligne</div><div class="d">Le client doit chercher, deviner, ou se déplacer.</div></div></div>
+      <div class="row warn"><div class="ico">!</div><div><div class="t">Infos dispersées</div><div class="d">Carte, horaires et concerts éparpillés sur les réseaux.</div></div></div>
+    </div>
+  </div>
+
+  <div class="solution">
+    <div>
+      <div class="script">la solution est simple</div>
+      <h3>Un site vitrine à votre image</h3>
+      <ul>
+        <li>Trouvable sur Google</li>
+        <li>Carte & concerts à jour</li>
+        <li>Contact en 1 clic</li>
+        <li>Galerie qui donne envie</li>
+        <li>Vitrine pro & rassurante</li>
+      </ul>
+    </div>
+    <div class="cta"><b>Maquette<br>offerte ✨</b><span>déjà prête — je vous montre l'aperçu&nbsp;?</span></div>
+  </div>
+
+  <div class="foot">Audit réalisé pour <b>L'Écluse 34 — La guinguette à Agen</b> · sans engagement</div>
+</div>
+</body>
+</html>
