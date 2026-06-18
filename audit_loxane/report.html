@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<style>
+  :root{
+    --navy:#0e1f3a; --navy2:#16294a; --blue:#1f6feb; --sky:#e8f0fe;
+    --red:#e23b3b; --amber:#f5a623; --green:#1aa260; --ink:#1a2230;
+    --grey:#5b6573; --line:#e2e7ee; --bg:#f4f6fa;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{font-family:'DejaVu Sans','FreeSans',sans-serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .page{width:794px;height:1123px;background:#fff;position:relative;overflow:hidden;}
+  .page+.page{page-break-before:always;}
+  /* ---------- HEADER ---------- */
+  .hdr{background:linear-gradient(120deg,var(--navy) 0%,var(--navy2) 55%,#1d3866 100%);color:#fff;padding:30px 40px 26px;position:relative;}
+  .hdr::after{content:"";position:absolute;right:-60px;top:-60px;width:230px;height:230px;border-radius:50%;background:rgba(31,111,235,.18);}
+  .hdr::before{content:"";position:absolute;right:60px;bottom:-40px;width:120px;height:120px;border-radius:50%;background:rgba(245,166,35,.16);}
+  .brandrow{display:flex;align-items:center;gap:16px;position:relative;z-index:2;}
+  .logo{width:62px;height:62px;border-radius:14px;background:linear-gradient(135deg,var(--red),#ff7a45);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(226,59,59,.4);flex:0 0 auto;}
+  .logo svg{width:38px;height:38px;}
+  .brandtxt h1{font-size:25px;letter-spacing:.5px;font-weight:700;}
+  .brandtxt .sub{font-size:13px;color:#aebfda;margin-top:3px;letter-spacing:.3px;}
+  .tag{display:inline-block;margin-top:14px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:6px 14px;border-radius:30px;font-size:12px;letter-spacing:.4px;position:relative;z-index:2;}
+  .metaright{position:absolute;top:30px;right:40px;text-align:right;z-index:3;font-size:11px;color:#aebfda;line-height:1.7;}
+  .metaright b{color:#fff;}
+  /* ---------- SCORE BAR ---------- */
+  .scorewrap{display:flex;gap:18px;padding:22px 40px;background:var(--bg);border-bottom:1px solid var(--line);align-items:center;}
+  .gauge{flex:0 0 118px;text-align:center;}
+  .ring{width:108px;height:108px;border-radius:50%;background:
+    conic-gradient(var(--red) 0 43%, #e6eaf1 43% 100%);display:flex;align-items:center;justify-content:center;margin:0 auto;}
+  .ring .inner{width:80px;height:80px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px var(--line);}
+  .ring .inner b{font-size:26px;color:var(--ink);line-height:1;}
+  .ring .inner span{font-size:10px;color:var(--grey);}
+  .gauge .glab{font-size:11px;color:var(--grey);margin-top:8px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;}
+  .scoretxt{flex:1;}
+  .scoretxt h2{font-size:16px;color:var(--navy);margin-bottom:6px;}
+  .scoretxt p{font-size:12.5px;color:var(--grey);line-height:1.6;}
+  .pills{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
+  .pill{font-size:10.5px;padding:4px 10px;border-radius:20px;font-weight:700;letter-spacing:.3px;}
+  .pill.bad{background:#fdecec;color:var(--red);}
+  .pill.mid{background:#fef3e0;color:#b9760a;}
+  .pill.ok{background:#e6f6ee;color:var(--green);}
+  /* ---------- SECTIONS ---------- */
+  .body{padding:22px 40px 0;}
+  .sec-title{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--navy);letter-spacing:.4px;text-transform:uppercase;margin:4px 0 14px;}
+  .sec-title .bar{width:5px;height:18px;border-radius:3px;background:var(--blue);}
+  .findings{display:flex;flex-direction:column;gap:11px;}
+  .find{display:flex;gap:13px;border:1px solid var(--line);border-left-width:5px;border-radius:10px;padding:12px 14px;background:#fff;}
+  .find.crit{border-left-color:var(--red);}
+  .find.high{border-left-color:var(--amber);}
+  .find.med{border-left-color:var(--blue);}
+  .ficon{flex:0 0 34px;width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;}
+  .find.crit .ficon{background:#fdecec;}
+  .find.high .ficon{background:#fef3e0;}
+  .find.med .ficon{background:var(--sky);}
+  .ficon svg{width:20px;height:20px;}
+  .fbody{flex:1;}
+  .fbody .ftop{display:flex;justify-content:space-between;align-items:center;gap:8px;}
+  .fbody h3{font-size:13px;color:var(--ink);}
+  .sev{font-size:9.5px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.4px;white-space:nowrap;}
+  .sev.crit{background:var(--red);color:#fff;}
+  .sev.high{background:var(--amber);color:#3a2600;}
+  .sev.med{background:var(--blue);color:#fff;}
+  .fbody p{font-size:11.5px;color:var(--grey);line-height:1.55;margin-top:4px;}
+  /* forces */
+  .forces{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:6px;}
+  .force{display:flex;gap:9px;align-items:flex-start;background:#f0faf4;border:1px solid #d3eddd;border-radius:9px;padding:10px 12px;}
+  .force svg{flex:0 0 18px;width:18px;height:18px;margin-top:1px;}
+  .force span{font-size:11.5px;color:#19663f;line-height:1.5;}
+  /* footer */
+  .foot{position:absolute;bottom:0;left:0;right:0;height:34px;background:var(--navy);color:#9fb2d6;font-size:10px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;}
+  .foot b{color:#fff;}
+  /* ---------- PAGE 2 ---------- */
+  .hero2{background:linear-gradient(120deg,#0e1f3a,#1d3866);color:#fff;padding:26px 40px;}
+  .hero2 .k{font-size:11px;color:#f5a623;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+  .hero2 h2{font-size:23px;margin-top:8px;line-height:1.25;}
+  .hero2 p{font-size:12.5px;color:#bccbe6;margin-top:8px;max-width:600px;line-height:1.6;}
+  .benefits{display:grid;grid-template-columns:1fr 1fr;gap:13px;padding:22px 40px 6px;}
+  .ben{border:1px solid var(--line);border-radius:12px;padding:15px;background:#fff;box-shadow:0 2px 6px rgba(20,40,80,.04);}
+  .ben .bi{width:40px;height:40px;border-radius:10px;background:var(--sky);display:flex;align-items:center;justify-content:center;margin-bottom:9px;}
+  .ben .bi svg{width:23px;height:23px;}
+  .ben h3{font-size:13.5px;color:var(--navy);margin-bottom:5px;}
+  .ben p{font-size:11.3px;color:var(--grey);line-height:1.55;}
+  /* compare */
+  .cmp{margin:8px 40px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .cmp .crow{display:grid;grid-template-columns:1.3fr 1fr 1fr;font-size:11.5px;}
+  .cmp .crow>div{padding:9px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:7px;}
+  .cmp .chead>div{background:var(--navy);color:#fff;font-weight:700;font-size:11px;letter-spacing:.3px;border-bottom:none;}
+  .cmp .crow>div:first-child{font-weight:600;color:var(--ink);background:#fafbfd;}
+  .cmp .old{color:var(--red);}
+  .cmp .new{color:var(--green);font-weight:600;}
+  .cmp svg{width:14px;height:14px;flex:0 0 14px;}
+  /* cta */
+  .cta{margin:18px 40px 0;background:linear-gradient(120deg,#e23b3b,#ff7a45);border-radius:14px;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;color:#fff;box-shadow:0 8px 20px rgba(226,59,59,.3);}
+  .cta h3{font-size:16px;}
+  .cta p{font-size:11.5px;opacity:.95;margin-top:4px;max-width:430px;line-height:1.5;}
+  .cta .btn{background:#fff;color:#e23b3b;font-weight:700;font-size:13px;padding:12px 20px;border-radius:30px;white-space:nowrap;}
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1 ================= -->
+<section class="page">
+  <div class="hdr">
+    <div class="metaright">Audit réalisé le <b>18/06/2026</b><br>Site analysé : <b>pl-en-panne-47.com</b><br>Type : dépannage & garage auto/PL</div>
+    <div class="brandrow">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 13l2-5a2 2 0 0 1 1.9-1.3h7.2A2 2 0 0 1 17 8l2 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 13h18v4a1 1 0 0 1-1 1h-1.5M3 13v4a1 1 0 0 0 1 1h1.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><circle cx="7" cy="18" r="1.6" fill="#fff"/><circle cx="17" cy="18" r="1.6" fill="#fff"/></svg>
+      </div>
+      <div class="brandtxt">
+        <h1>AUDIT WEB — GARAGE LOXANE</h1>
+        <div class="sub">Dépannage & remorquage 24/7 · Estillac & Villeneuve-sur-Lot (47)</div>
+      </div>
+    </div>
+    <div class="tag">Diagnostic du site actuel + opportunités d'un nouveau site</div>
+  </div>
+
+  <div class="scorewrap">
+    <div class="gauge">
+      <div class="ring"><div class="inner"><b>4,3</b><span>/ 10</span></div></div>
+      <div class="glab">Note du site actuel</div>
+    </div>
+    <div class="scoretxt">
+      <h2>Une entreprise solide… desservie par un site dépassé</h2>
+      <p>Loxane bénéficie d'une vraie réputation locale et d'une activité 24/7 à fort potentiel. Mais le site web ne reflète pas ce sérieux : technologie ancienne, <b>pas de version sécurisée (HTTPS)</b> et <b>une version mobile à part</b> qui pénalise l'image et le référencement Google.</p>
+      <div class="pills">
+        <span class="pill bad">Non sécurisé (HTTP)</span>
+        <span class="pill bad">Non responsive</span>
+        <span class="pill mid">SEO à optimiser</span>
+        <span class="pill ok">Bonne réputation</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="sec-title"><span class="bar"></span>Points faibles du site actuel</div>
+    <div class="findings">
+
+      <div class="find crit">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" stroke="#e23b3b" stroke-width="1.7" stroke-linejoin="round"/><path d="M9.5 12l1.7 1.7L15 10" stroke="#e23b3b" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" opacity="0"/><path d="M12 8v4M12 15h.01" stroke="#e23b3b" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="fbody"><div class="ftop"><h3>Site en HTTP — non sécurisé</h3><span class="sev crit">CRITIQUE</span></div>
+        <p>Le site n'a pas de certificat SSL (adresse en <b>http://</b>). Chrome, Safari et Firefox affichent « Non sécurisé » aux visiteurs, ce qui fait fuir et fait perdre la confiance. Google déclasse aussi les sites non sécurisés.</p></div>
+      </div>
+
+      <div class="find high">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none"><rect x="6" y="3" width="12" height="18" rx="2" stroke="#f5a623" stroke-width="1.7"/><path d="M10 18h4" stroke="#f5a623" stroke-width="1.7" stroke-linecap="round"/><path d="M3 8l-1.2 1.2L3 10.4" stroke="#f5a623" stroke-width="1.6" stroke-linecap="round" opacity="0"/></svg></div>
+        <div class="fbody"><div class="ftop"><h3>Version mobile séparée — site non responsive</h3><span class="sev high">ÉLEVÉ</span></div>
+        <p>Le site utilise une vieille version mobile à part (dossier <b>/phone/</b>) au lieu d'un site qui s'adapte tout seul. Or +70&nbsp;% des recherches « dépannage » se font sur smartphone, souvent en urgence. Architecture datée = mauvaise expérience et perte d'appels.</p></div>
+      </div>
+
+      <div class="find med">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#1f6feb" stroke-width="1.7"/><path d="M16 16l4 4" stroke="#1f6feb" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="fbody"><div class="ftop"><h3>Référencement Google sous-exploité</h3><span class="sev med">MOYEN</span></div>
+        <p>URLs anciennes avec accents et « .html » (ex. <i>si-vous-êtes-en-panne.html</i>), structure de site builder dépassée. <b>Deux domaines concurrents</b> (pl-en-panne-47.com et garageloxane.com) dispersent la force SEO au lieu de la concentrer.</p></div>
+      </div>
+
+      <div class="find med">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v14H4z" stroke="#1f6feb" stroke-width="1.7"/><path d="M4 9h16M8 13h8M8 16h5" stroke="#1f6feb" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <div class="fbody"><div class="ftop"><h3>Conversion faible : peu d'appels & devis facilités</h3><span class="sev med">MOYEN</span></div>
+        <p>Design vieillissant, pas de bouton d'appel direct bien visible sur mobile, pas de formulaire de demande de devis moderne ni d'avis clients mis en avant. Le visiteur n'est pas guidé vers l'action (appeler / demander un dépannage).</p></div>
+      </div>
+
+    </div>
+
+    <div class="sec-title" style="margin-top:18px;"><span class="bar" style="background:var(--green);"></span>Ce qui fonctionne déjà (à valoriser)</div>
+    <div class="forces">
+      <div class="force"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-11" stroke="#1aa260" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Bonne réputation locale & avis clients positifs (PagesJaunes, Google…)</span></div>
+      <div class="force"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-11" stroke="#1aa260" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Activité 24/7 et agrément autoroutes Vinci : argument fort à mettre en avant</span></div>
+      <div class="force"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-11" stroke="#1aa260" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>2 implantations (Estillac & Villeneuve) couvrant tout le 47</span></div>
+      <div class="force"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-11" stroke="#1aa260" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Offre large : VL, PL, utilitaires, motos, garage agréé Eurorepar</span></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Audit web — <b>Garage Loxane</b></span><span>Page 1 / 2</span></div>
+</section>
+
+<!-- ================= PAGE 2 ================= -->
+<section class="page">
+  <div class="hero2">
+    <div class="k">La solution</div>
+    <h2>Ce qu'un nouveau site moderne vous apporterait</h2>
+    <p>Un site rapide, sécurisé et 100&nbsp;% adapté au mobile, pensé pour transformer les visiteurs en appels et en demandes de dépannage — tout en remontant dans Google sur « dépannage 47 / Agen / Villeneuve ».</p>
+  </div>
+
+  <div class="benefits">
+    <div class="ben">
+      <div class="bi"><svg viewBox="0 0 24 24" fill="none"><rect x="6" y="2.5" width="12" height="19" rx="2.5" stroke="#1f6feb" stroke-width="1.7"/><path d="M10 18.5h4" stroke="#1f6feb" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+      <h3>100% mobile & clic-pour-appeler</h3>
+      <p>Un seul site qui s'adapte à tous les écrans, avec un gros bouton « Appeler maintenant » en urgence. Plus d'appels, moins de visiteurs perdus.</p>
+    </div>
+    <div class="ben">
+      <div class="bi"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2" stroke="#1f6feb" stroke-width="1.7"/><path d="M8 10V7a4 4 0 1 1 8 0v3" stroke="#1f6feb" stroke-width="1.7"/></svg></div>
+      <h3>Sécurisé (HTTPS) & rassurant</h3>
+      <p>Le cadenas vert, fini le « Non sécurisé ». Image pro qui inspire confiance et qui plaît à Google.</p>
+    </div>
+    <div class="ben">
+      <div class="bi"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#1f6feb" stroke-width="1.7"/><path d="M16 16l4 4" stroke="#1f6feb" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <h3>Meilleur référencement local</h3>
+      <p>Structure optimisée, un seul domaine fort, pages dédiées Agen / Villeneuve / PL. Objectif : être trouvé en premier en cas de panne.</p>
+    </div>
+    <div class="ben">
+      <div class="bi"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H7l-3 3z" stroke="#1f6feb" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 9h8M8 12h5" stroke="#1f6feb" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <h3>Devis & avis qui convertissent</h3>
+      <p>Formulaire de demande de dépannage/devis, avis clients 5★ mis en avant, photos des ateliers et des véhicules. On guide le visiteur vers l'action.</p>
+    </div>
+  </div>
+
+  <div class="sec-title" style="padding:0 40px;margin:16px 0 0;"><span class="bar"></span>Avant / Après en un coup d'œil</div>
+  <div class="cmp">
+    <div class="crow chead"><div>Critère</div><div>Site actuel</div><div>Nouveau site</div></div>
+    <div class="crow"><div>Sécurité (HTTPS)</div><div class="old"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#e23b3b" stroke-width="2" stroke-linecap="round"/></svg>Non sécurisé</div><div class="new"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-11" stroke="#1aa260" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Cadenas vert</div></div>
+    <div class="crow"><div>Mobile</div><div class="old"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#e23b3b" stroke-width="2" stroke-linecap="round"/></svg>Version à part datée</div><div class="new"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-11" stroke="#1aa260" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Responsive natif</div></div>
+    <div class="crow"><div>Prise de contact</div><div class="old"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#e23b3b" stroke-width="2" stroke-linecap="round"/></svg>Peu visible</div><div class="new"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-11" stroke="#1aa260" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Appel + devis en 1 clic</div></div>
+    <div class="crow"><div>Référencement Google</div><div class="old"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#e23b3b" stroke-width="2" stroke-linecap="round"/></svg>Dispersé (2 domaines)</div><div class="new"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-11" stroke="#1aa260" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Concentré & optimisé</div></div>
+    <div class="crow"><div>Image de marque</div><div class="old"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#e23b3b" stroke-width="2" stroke-linecap="round"/></svg>Datée</div><div class="new"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-11" stroke="#1aa260" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Moderne & pro</div></div>
+  </div>
+
+  <div class="cta">
+    <div>
+      <h3>Passons à un site à la hauteur de Loxane</h3>
+      <p>Je peux vous proposer une maquette du nouveau site adapté au dépannage 24/7. Discutons-en !</p>
+    </div>
+    <div class="btn">Demander une maquette</div>
+  </div>
+
+  <div class="foot"><span>Audit web — <b>Garage Loxane</b></span><span>Page 2 / 2</span></div>
+</section>
+
+</body>
+</html>
